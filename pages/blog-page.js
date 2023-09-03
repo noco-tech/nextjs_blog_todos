@@ -1,11 +1,19 @@
 import Link from "next/link";
 import { Layout } from "../components/Layout"
+import { getAllPostsData } from "../lib/posts";
+import { Post } from "../components/Post";
 
-const BlogPage = ({}) => {
+const BlogPage = ({filteredPosts}) => {
   return (
     <Layout title="Blog page">
+      <p className="text-4xl mb-10">Blog page</p>
+      <ul>
+        {filteredPosts &&
+          filteredPosts.map((post) => <Post key={post.id} post={post} />)}
+      </ul>
+
       <Link href="/main-page">
-      <div className="flex flex-col items-center justify-center flex-1 text-center">
+      <div className="flex mt-12">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -27,4 +35,12 @@ const BlogPage = ({}) => {
   );
 }
 
+export async function getStaticProps() {
+  const filteredPosts = await getAllPostsData();
+  return {
+    props: {filteredPosts}
+  }
+}
+
 export default BlogPage
+
