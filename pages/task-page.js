@@ -28,7 +28,7 @@ const TaskPage = ({ staticfilteredTasks }) => {
         <p className="text-4xl mb-7">Task page</p>
         <ul>
           {filteredTasks &&
-            filteredTasks.map((task) => <Task key={task.id} task={task} />)}
+            filteredTasks.map((task) => <Task key={task.id} task={task} taskDeleted={mutate} />)}
         </ul>
 
         <Link href="/main-page">
