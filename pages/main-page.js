@@ -16,16 +16,18 @@ const MainPage = () => {
 
   return (
     <Layout title="Main page">
-      <div className="mb-10">
+      <div className="flex items-center justify-center mx-5">
         <Link href="/blog-page">
           <a className="bg-indigo-500 mr-8 hover:bg-indigo-600 text-white px-4 py-12 rounded">
-            Visit Blog by SSG + ISR
+            <span className="text-bold text-yellow-400">Blog</span> by SSG
+            + ISR
           </a>
         </Link>
 
         <Link href="/task-page">
-          <a className="bg-gray-500 ml-8 hover:bg-gray-600 text-white px-4 py-12 rounded">
-            Visit Task by ISR + CSR
+          <a className="bg-yellow-400 ml-8 hover:bg-yellow-500 text-white px-4 py-12 rounded">
+            <span className="text-bold text-indigo-700">Task</span> by ISR
+            + CSR
           </a>
         </Link>
       </div>

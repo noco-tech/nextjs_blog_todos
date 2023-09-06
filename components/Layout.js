@@ -6,14 +6,14 @@ export const Layout = ({children, title='Default title'}) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <main className="flex flex-1 justify-center items-center w-screen flex-col">
+      <main className="container flex flex-1 justify-center items-center w-screen flex-col">
         {children}
       </main>
       <footer className="w-full h-6 flex justify-center items-center text-gray-500 text-sm">
         @copy; {new Date().getFullYear()} Next.js Tailwindcss
       </footer>
     </div>
-  )
+  );
 }
 
 
