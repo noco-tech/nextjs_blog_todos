@@ -4,6 +4,8 @@ import { getAllTasksData } from "../lib/tasks";
 import { Task } from "../components/Task";
 import useSWR from "swr";
 import { useEffect } from "react";
+import StateContextProvider from "../context/StateContext";
+import { TaskForm } from "../components/TaskForm";
 
 //useSWRを使う場合
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -23,12 +25,15 @@ const TaskPage = ({ staticfilteredTasks }) => {
   }, [])
 
   return (
-    <>
+    <StateContextProvider>
       <Layout title="Task page">
         <p className="text-4xl mb-7">Task page</p>
+        <TaskForm taskCreated={mutate} />
         <ul>
           {filteredTasks &&
-            filteredTasks.map((task) => <Task key={task.id} task={task} taskDeleted={mutate} />)}
+            filteredTasks.map((task) => (
+              <Task key={task.id} task={task} taskDeleted={mutate} />
+            ))}
         </ul>
 
         <Link href="/main-page">
@@ -51,7 +56,7 @@ const TaskPage = ({ staticfilteredTasks }) => {
           </div>
         </Link>
       </Layout>
-    </>
+    </StateContextProvider>
   );
 };
 
